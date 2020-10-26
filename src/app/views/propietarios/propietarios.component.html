@@ -1,0 +1,105 @@
+<div class="animated fadeIn">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Propietarios
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Ingreso de Propietarios de Mascotas</h4>
+                    <h6 class="card-subtitle"></h6>
+                    <div class="table-responsive">
+                        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                            <button type="button" class="btn btn-pill btn-primary" data-toggle="modal" data-target="#modalEmpleado">Agregar Propietario</button>
+                        </div>
+                        <div class="modal fade" id="modalEmpleado" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-primary modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="myModalLabel">Agregar Propietario</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" [(ngModel)]="Nombre">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="apellidos">Apellidos</label>
+                                        <input type="text" class="form-control" name="apellidos" [(ngModel)]="Apellido">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="direccion">Dirección</label>
+                                        <input type="text" class="form-control" name="direccion" [(ngModel)]="Direccion">
+                                      </div>
+                                      <div class="row">
+                                        <div class="form-group col-sm-8">
+                                          <label for="telefono">Teléfono</label>
+                                          <input type="text" class="form-control" name="telefono" [(ngModel)]="Telefono">
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                          <label for="dui">DUI</label>
+                                          <input type="text" class="form-control" name="dui" [(ngModel)]="DUI">
+                                        </div>
+                                      </div><!--/.row-->
+                                      <div class="row">
+                                        <div class="form-group col-sm-8">
+                                          <label for="correo">Correo Electrónico</label>
+                                          <input type="email" class="form-control" name="correo" [(ngModel)]="Correo">
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                          <label for="contra">Contraseña</label>
+                                          <input type="password" class="form-control" name="contra" [(ngModel)]="Password">
+                                        </div>
+                                      </div><!--/.row--> 
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Registrar()">Guardar</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>       
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> Propietarios Registrados
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered table-hover text-center">
+                <thead class="table-primary">
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo Electrónico</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>DUI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let propietario of propietarioList">
+                    <td>{{propietario.Nombre}}</td>
+                    <td>{{propietario.Apellidos}}</td>
+                    <td>{{propietario.Correo}}</td>
+                    <td>{{propietario.Telefono}}</td>
+                    <td>{{propietario.Direccion}}</td>
+                    <td>{{propietario.DUI}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+    

@@ -1,0 +1,105 @@
+<div class="animated fadeIn">
+
+  <div class="row">
+    <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Servicios
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Gestión de Servicios</h4>
+                    <h6 class="card-subtitle"></h6>
+                    <div class="table-responsive">
+                        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                            <button type="button" class="btn btn-pill btn-primary" data-toggle="modal" data-target="#modalServicio">Agregar Servicio</button>
+                        </div>
+                        <div class="modal fade" id="modalServicio" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-primary modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="myModalLabel">Agregar Servicio</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripción</label>
+                                        <input type="text" class="form-control" name="descripcion" [(ngModel)]="Descripcion">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="costo">Costo</label>
+                                        <input type="text" class="form-control" name="costo" [(ngModel)]="Costo">
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Registrar()">Guardar</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>       
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> Servicios Actuales
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered table-hover text-center">
+                <thead class="table-primary">
+                  <tr>
+                    <th>Descripción</th>
+                    <th>Costo</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let servicio of servicioList">
+                    <td>{{servicio.Descripcion}}</td>
+                    <td>${{servicio.Costo}}</td>
+                    <td>
+                      <a class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Modificar" data-toggle="modal" data-target="#modalServicioEditar" (click)="Editar(servicio)"><i class="icon-pencil"></i></a>
+                      <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="Borrar(servicio.$key)"><i class="icon-trash"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modalServicioEditar" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-warning modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Modificar Servicio</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" name="key" [ngModel]="servicioService.selectedServicio.$key">
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" class="form-control" name="descripcion" [(ngModel)]="servicioService.selectedServicio.Descripcion" #descripcion>
+                      </div>
+                      <div class="form-group">
+                        <label for="costo">Costo</label>
+                        <input type="text" class="form-control" name="costo" [(ngModel)]="servicioService.selectedServicio.Costo" #costo>
+                      </div>
+                </div> 
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Cerrar</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Actualizar(descripcion.value,costo.value)">Guardar</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->  
+    </div>
+  </div>
+</div>

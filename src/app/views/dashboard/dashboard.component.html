@@ -1,0 +1,80 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right">
+              <i class="fa fa-paw"></i>
+          </div>
+          <div class="text-value">{{cantidadMascotas}}</div>
+          <div><p style="font-size: 20px;">Mascotas Registradas</p></div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right">
+              <i class="icon-user"></i>
+          </div>
+          <div class="text-value">{{cantidadPropietarios}}</div>
+          <div><p style="font-size: 19px;">Propietarios Registrados</p></div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right" dropdown>
+              <i class="icon-clock"></i>
+          </div>
+          <div class="text-value">{{cantidadCitas}}</div>
+          <div><p style="font-size: 20px;">Citas Registradas</p></div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right">
+              <i class="icon-notebook"></i>
+          </div>
+          <div class="text-value">{{cantidadConsultas}}</div>
+          <div><p style="font-size: 20px;">Consultas Realizadas</p></div>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Citas Programadas
+        </div>
+        <div class="card-body">
+          <br> 
+          <table class="table table-hover text-center">
+            <thead class="thead-light">
+              <tr>
+                <th><i class="fa fa-paw"></i> Mascota</th>
+                <th>Propietario</th>
+                <th>Motivo</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let cita of citaList">
+                <td>{{cita.Mascota}}</td>
+                <td>{{cita.Propietario}}</td>
+                <td>{{cita.Motivo}}</td>
+                <td>{{cita.Fecha}}</td>
+                <td>{{cita.Hora}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+</div>

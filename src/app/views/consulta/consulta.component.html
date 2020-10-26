@@ -1,0 +1,111 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Historial Consultas</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="table-responsive">
+                    <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                     <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">Agregar Consulta</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                 </div>
+                                            <div class="modal-body"> 
+                                                <form class="form-horizontal form-material">
+                                                    <div class="form-group">
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="date" class="form-control" placeholder="Fecha" name="Fecha" [(ngModel)]="Fecha"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="text" class="form-control" placeholder="DUI Propietario" name="Propietario" [(ngModel)]="Propietario"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="text" class="form-control" placeholder="Nombre Mascota" name="Mascota" [(ngModel)]="Mascota"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="text" class="form-control" placeholder="Servicio" name="Servicio" [(ngModel)]="Servicio"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="text" class="form-control" placeholder="Medicamentos" name="Medicamentos" [(ngModel)]="Medicamentos"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="text" class="form-control" placeholder="Motivo" name="Motivo" [(ngModel)]="Motivo"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="text" class="form-control" placeholder="Diagnostico" name="Diagnostico" [(ngModel)]="Diagnostico"> </div>
+                                                        <div class="col-md-12 m-b-20">
+                                                            <input type="number" class="form-control" placeholder="Total($)" name="Total" [(ngModel)]="Total"> </div>
+                                                        
+                            
+                                                    </div>
+                                                        
+                                                </form>
+                                             </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" (click)="onSubmit()">Save</button>
+                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div> 
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list footable-loaded footable" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th class="footable-sortable">Fecha<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">DUI Propietario<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Nombre Mascota<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Servicio<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Medicamentos<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Motivo<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Diagnostico<span class="footable-sort-indicator"></span></th>
+                                <th class="footable-sortable">Total($)<span class="footable-sort-indicator"></span></th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let consulta of consultaList">
+                                <td>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                          <a class="nav-link" routerLink="/profile">
+                                    <!-- <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user" width="40" class="img-circle"></a> -->
+                                    {{consulta.Fecha}}</a></li></ul>
+                                </td>
+                                <td>{{consulta.Propietario}}</td>
+                                <td>{{consulta.Mascota}}</td>
+                                <td>{{consulta.Servicio}}</td>
+                                <td>{{consulta.Medicamentos}}</td>
+                                <td>{{consulta.Motivo}}</td>
+                                <td>{{consulta.Diagnostico}}</td>
+                                <td>${{consulta.Total}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete" (click)="onDelete(mascota.$key)"><i class="ti-close" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Agregar Consulta</button>
+                                </td>
+                                
+                                <!-- <td colspan="7">
+                                    <div class="text-right">
+                                        <ul class="pagination"> <li class="footable-page-arrow disabled"><a data-page="first" href="#first">«</a></li><li class="footable-page-arrow disabled"><a data-page="prev" href="#prev">‹</a></li><li class="footable-page active"><a data-page="0" href="#">1</a></li><li class="footable-page"><a data-page="1" href="#">2</a></li><li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li><li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li></ul>
+                                    </div>
+                                </td> -->
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+     
+        <!-- Column -->
+
+        <!-- Column -->
+
+        <!-- Column -->
+        
+    </div>
+</div>

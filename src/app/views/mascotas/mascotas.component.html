@@ -1,0 +1,107 @@
+<div class="animated fadeIn">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Mascotas
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Ingreso de Mascotas</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="table-responsive">
+                    <br>
+                    <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                        <button type="button" class="btn btn-pill btn-primary" data-toggle="modal" data-target="#modalMascota">Agregar Mascota</button>
+                    </div>
+                    <div class="modal fade in" id="modalMascota" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                                     <div class="modal-dialog modal-primary modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">Agregar Mascota</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                                            <div class="modal-body"> 
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Nombre</label>
+                                                            <input type="text" class="form-control" placeholder="Nombre de Mascota" name="Nombre_mascota" [(ngModel)]="Nombre_mascota"> </div>
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Especie</label>
+                                                            <input type="text" class="form-control" placeholder="Especie" name="Especie" [(ngModel)]="Especie"> </div>
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Raza</label>
+                                                            <input type="text" class="form-control" placeholder="Raza" name="Raza" [(ngModel)]="Raza"> </div>
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Color</label>
+                                                            <input type="text" class="form-control" placeholder="Color" name="Color" [(ngModel)]="Color"> </div>
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Fecha Nacimiento</label>
+                                                            <input type="date" class="form-control" placeholder="Fecha de Nacimiento" name="Fecha_nacimiento" [(ngModel)]="Fecha_nacimiento"> </div>
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Propietario</label>
+                                                            <input type="text" class="form-control" placeholder="Propietario" name="Nombre_propietario" [(ngModel)]="Nombre_propietario"> </div>
+                                             </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onSubmit()">Guardar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div> 
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <br>
+                                <br>
+                                <table class="table table-bordered table-hover text-center">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Nombre de mascota</th>
+                                <th>Especie</th>
+                                <th>Raza</th>
+                                <th>Color</th>
+                                <th>Fecha de Nacimiento</th>
+                                <th>Propietario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let mascota of mascotaList">
+                                <td>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                          <a class="nav-link" routerLink="/profile">
+                                    <!-- <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user" width="40" class="img-circle"></a> -->
+                                    {{mascota.Nombre_mascota}}</a></li></ul>
+                                </td>
+                                <td>{{mascota.Especie}}</td>
+                                <td>{{mascota.Raza}}</td>
+                                <td>{{mascota.Color}}</td>
+                                <td>{{mascota.Fecha_nacimiento}}</td>
+                                <td>{{mascota.Nombre_propietario}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                
+                                <!-- <td colspan="7">
+                                    <div class="text-right">
+                                        <ul class="pagination"> <li class="footable-page-arrow disabled"><a data-page="first" href="#first">«</a></li><li class="footable-page-arrow disabled"><a data-page="prev" href="#prev">‹</a></li><li class="footable-page active"><a data-page="0" href="#">1</a></li><li class="footable-page"><a data-page="1" href="#">2</a></li><li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li><li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li></ul>
+                                    </div>
+                                </td> -->
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+     
+        <!-- Column -->
+
+        <!-- Column -->
+
+        <!-- Column -->
+        
+    </div>
+</div>
+</div>
