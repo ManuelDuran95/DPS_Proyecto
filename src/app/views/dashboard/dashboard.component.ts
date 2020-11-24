@@ -11,6 +11,7 @@ import { CitaService } from '../../services/cita.service';
 import { Cita } from '../../models/cita';
 import { Consulta } from '../../models/consulta';
 import { ConsultaService } from '../../services/consulta.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cita',
@@ -31,6 +32,15 @@ export class DashboardComponent implements OnInit {
  cantidadCitas:number;
  consultaList: Consulta[];
  cantidadConsultas:number;
+ Filtro = "Sin verificar";
+ $key:string;
+    num:number;
+    fecha:string;
+    hora:string;
+    motivo:string;
+    estado:string;
+    mascota:string;
+    propietario:string;
 
   ListarMascotas(){
     return this.mascotaservice.getdatos()
@@ -64,8 +74,11 @@ export class DashboardComponent implements OnInit {
         this.citaList = [];
         item.forEach(element => {
           let x = element.payload.toJSON();
+        if(x["Estado"]=="Sin verificar")
+        {
           x["$key"] = element.key;
           this.citaList.push(x as Cita);
+        }
         });
         this.cantidadCitas = this.citaList.length;
       });
@@ -84,10 +97,50 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+
   ngOnInit(){
     this.ListarMascotas();
     this.ListarPropietarios();
-    this.ListarCitas();
     this.ListarConsultas();
+    this.ListarCitas();
+  }
+
+  Verificar(cita:Cita){
+    this.$key = cita.$key;
+    this.num = cita.Num;
+    this.fecha = cita.Fecha;
+    this.hora = cita.Hora;
+    this.motivo = cita.Motivo;
+    this.mascota = cita.Mascota;
+    this.propietario = cita.Propietario;
+    Swal.fire({
+      title: 'Verificacion de Cita',
+      text: "Una vez rechazada debera generarse una nueva cita",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Rechazar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.estado ="Verificado";
+        this.citasService.EstadoCita(this.$key,this.num,this.fecha,this.hora,this.motivo,this.estado,this.mascota,this.propietario);
+        Swal.fire(
+          '¡Verificada!',
+          'La cita ha sido aceptada.',
+          'success'
+        )
+      }
+      else{
+        this.estado = "Rechazado";
+        this.citasService.EstadoCita(this.$key,this.num,this.fecha,this.hora,this.motivo,this.estado,this.mascota,this.propietario);
+        Swal.fire(
+          '¡Verificada!',
+          'La cita ha sido rechazada.',
+          'info'
+        )
+      }
+    })  
   }
 }

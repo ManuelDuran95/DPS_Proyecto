@@ -29,7 +29,7 @@
               <i class="icon-clock"></i>
           </div>
           <div class="text-value">{{cantidadCitas}}</div>
-          <div><p style="font-size: 20px;">Citas Registradas</p></div>
+          <div><p style="font-size: 20px;">Citas Sin Verificar</p></div>
         </div>
       </div>
     </div><!--/.col-->
@@ -49,7 +49,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          Citas Programadas
+          Solicitudes de Citas
         </div>
         <div class="card-body">
           <br> 
@@ -61,6 +61,7 @@
                 <th>Motivo</th>
                 <th>Fecha</th>
                 <th>Hora</th>
+                <th>Verificar</th>
               </tr>
             </thead>
             <tbody>
@@ -70,6 +71,9 @@
                 <td>{{cita.Motivo}}</td>
                 <td>{{cita.Fecha}}</td>
                 <td>{{cita.Hora}}</td>
+                <td>
+                  <a class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Verificar" (click)="Verificar(cita)"><i class="icon-eye"></i></a>
+              </td>
               </tr>
             </tbody>
           </table>
