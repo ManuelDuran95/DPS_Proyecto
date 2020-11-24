@@ -97,7 +97,7 @@ export class PropietariosListComponent implements OnInit {
   Editar(propietario: Propietario) {
     this.$key = propietario.$key;
     this.nombre = propietario.Nombre;
-    this.apellidos = propietario.Apellidos;
+    this.apellidos = propietario.Apellido;
     this.direccion = propietario.Direccion;
     this.telefono = propietario.Telefono;
     this.dui = propietario.DUI;
