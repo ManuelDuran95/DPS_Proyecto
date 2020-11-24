@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import { Cita } from '../models/cita';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,20 @@ export class CitaService {
       Propietario:propietario
        });
       }
-      deleteCita($key: string) {
+      deleteCita($key: string) { 
         this.citaList.remove($key);
+      }
+
+      EstadoCita($key:string,num:number,fecha:string,hora:string,motivo:string,estado:string,mascota:string,propietario:string){
+      this.citaList.update($key, {
+        Num:num,
+        Fecha:fecha,
+        Hora:hora,
+        Motivo:motivo,
+        Estado:estado,
+      Mascota:mascota,
+      Propietario:propietario
+            });
       }
 
   

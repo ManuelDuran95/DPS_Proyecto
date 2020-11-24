@@ -25,19 +25,19 @@ export class ConsultaService {
       Motivo:motivo,
       Diagnostico:diagnostico,
       Total:total
-    });
+    }); 
 
   }
   updateConsulta(consulta:Consulta){
     this.consultaList.update(consulta.$key,{
-      Fecha:consulta.fecha,
-      Propietario:consulta.propietario,
-      Mascota:consulta.mascota,
-      Servicio:consulta.servicio,
-      Medicamentos:consulta.medicamentos,
-      Motivo:consulta.motivo,
-      Diagnostico:consulta.diagnostico,
-      Total:consulta.total
+      Fecha:consulta.Fecha,
+      Propietario:consulta.Propietario,
+      Mascota:consulta.Mascota,
+      Servicio:consulta.Servicio,
+      Medicamentos:consulta.Medicamentos,
+      Motivo:consulta.Motivo,
+      Diagnostico:consulta.Diagnostico,
+      Total:consulta.Total
     });
 
   }

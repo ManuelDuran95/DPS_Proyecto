@@ -27,7 +27,7 @@ selectedPropietario: Propietario;
       Correo: correo,
       Password:password
        }); 
-      }
+      } 
 
       updatePropietario($key:string,nombre:string,apellido:string,dui:string,direccion:string,telefono:string,correo:String,password:string) {
         // Utilizando el metodo update de firebase , se envia clave y los parametros que va actualizar 
